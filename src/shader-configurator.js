@@ -482,6 +482,7 @@ ${renders.join("")}
         let fallbackLayer = new WebGLModule.IdentityLayer("id", {
             shaderObject: {},
             webglContext: {},
+            cache: {},
             interactive: false,
             invalidate: () => {},
             rebuild: () => {},
