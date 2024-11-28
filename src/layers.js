@@ -417,12 +417,11 @@ function initXopatLayers() {
              * @param value filter parameter (scalar) value
              */
             UTILITIES.setFilterOfLayer = function(layerId, filter, value) {
-                let viz = seaGL.visualization();
-                if (viz.shaders.hasOwnProperty(layerId)) {
-                    //store to the configuration
-                    viz.shaders[layerId]._renderContext.setFilterValue(filter, value);
-                    viz.shaders[layerId]._renderContext.resetFilters(viz.shaders[layerId].params);
-                    seaGL.reorder(null); //force to re-build
+                const shaderLayer = VIEWER.drawer.renderer.shadersCounter[layerId];
+                if (shaderLayer) {
+                    shaderLayer.setFilterValue(filter, value);
+                    shaderLayer.resetFilters();
+                    shaderLayer._rebuild();
                 } else {
                     console.error("Invalid layer: bad initialization?");
                 }
