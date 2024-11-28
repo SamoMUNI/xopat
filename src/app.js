@@ -563,7 +563,7 @@ style="float: right;"><span class="material-icons pl-0" style="line-height: 11px
             seaGL.reorder(Array.prototype.map.call(listItems, child => child.dataset.id));
         })
     }
-    function temp__createHTMLLayerControls(html, dataId, isVisible, layer, wasErrorWhenLoading) {
+    function temp__createHTMLLayerControls(html, dataId, isVisible, layer, wasErrorWhenLoading, shaderLayer) {
         let fixed = UTILITIES.isJSONBoolean(layer.fixed, true);
         //let canChangeFilters = layer.hasOwnProperty("toggleFilters") && layer.toggleFilters;
         const title = layer.name;
@@ -590,7 +590,7 @@ style="float: right;"><span class="material-icons pl-0" style="line-height: 11px
                 let found = layer.params.hasOwnProperty(key);
                 if (found) {
                     filterUpdate.push('<span>', WebGLModule.ShaderLayer.filterNames[key],
-                        ':</span><input type="number" value="', layer._renderContext.getFilterValue(key, layer.params[key]),
+                        ':</span><input type="number" value="', shaderLayer.getFilterValue(key, layer.params[key]),
                         '" style="width:80px;" onchange="UTILITIES.setFilterOfLayer(\'', dataId,
                         "', '", key, '\', Number.parseFloat(this.value));" class="form-control"><br>');
                 }
