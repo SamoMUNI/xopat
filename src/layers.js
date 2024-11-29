@@ -422,6 +422,7 @@ function initXopatLayers() {
                     shaderLayer.setFilterValue(filter, value);
                     shaderLayer.resetFilters();
                     shaderLayer._rebuild();
+                    shaderLayer.invalidate();
                 } else {
                     console.error("Invalid layer: bad initialization?");
                 }
