@@ -99,7 +99,7 @@ function initXopatUI() {
                 if (this._timer) clearTimeout(this._timer);
                 this._timer = setTimeout(this._hideImpl.bind(this, true), delayMS);
                 this._opts = opts;
-                this._opts.onShow && this._opts.onShow();
+                this._opts && this._opts.onShow && this._opts.onShow();
             }
         },
 
