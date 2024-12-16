@@ -417,7 +417,7 @@ ${renders.join("")}
 
     getAvailableControlsForShader: function(shader) {
         const uiControls = this._buildControls();
-        let controls = shader.defaultControls;
+        let controls = shader.constructor.defaultControls ? shader.constructor.defaultControls : {};
 
         //this is done with visualization layer as hard-coded control option, include here as well
         if (controls.opacity === undefined || (typeof controls.opacity === "object" && !controls.opacity.accepts("float"))) {
