@@ -579,17 +579,17 @@ style="float: right;"><span class="material-icons pl-0" style="line-height: 11px
 // onclick="UTILITIES.changeModeOfLayer('${dataId}', this.dataset.mode);" title="${$.t('main.shaders.blendingExplain')}">payments</span>`;
 
         let availableShaders = "";
-        for (let available of WebGLModule.ShaderMediator.availableShaders()) {
+        for (let available of OpenSeadragon.WebGLModule.ShaderMediator.availableShaders()) {
             let selected = available.type() === layer.type ? " selected" : "";
             availableShaders += `<option value="${available.type()}"${selected}>${available.name()}</option>`;
         }
 
         let filterUpdate = [];
         if (!fixed) {
-            for (let key in WebGLModule.ShaderLayer.filters) {
+            for (let key in OpenSeadragon.WebGLModule.ShaderLayer.filters) {
                 let found = layer.params.hasOwnProperty(key);
                 if (found) {
-                    filterUpdate.push('<span>', WebGLModule.ShaderLayer.filterNames[key],
+                    filterUpdate.push('<span>', OpenSeadragon.WebGLModule.ShaderLayer.filterNames[key],
                         ':</span><input type="number" value="', shaderLayer.getFilterValue(key, layer.params[key]),
                         '" style="width:80px;" onchange="UTILITIES.setFilterOfLayer(\'', dataId,
                         "', '", key, '\', Number.parseFloat(this.value));" class="form-control"><br>');
